@@ -8,7 +8,7 @@ this is a bank app using streamlit as the user interface. Very simple and very e
 
 What we are doing;
 
-1.create a BankAccount Parent class 
+1.Creating a BankAccount Parent class 
 
 📌Let the class contain simple Banking Attributes E.g(owner, balance and transactions log)
 
