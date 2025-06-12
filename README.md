@@ -1,10 +1,10 @@
 this is a bank app 
-like before fork it, clone it and work on it.
+like before fork it, clone it and make a pull request on it.
 
 1.savings account 
 
 📌Make the deposit method for the savings account 
-📌 under the savings set a limit for withdrawal at a time 
+📌 under the savings set a limit for withdrawal at a time (like 25m)
 
 2.Current account 
 
