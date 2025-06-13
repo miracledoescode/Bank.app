@@ -9,20 +9,20 @@ from datetime import datetime
 class BankAccount(ABC):
 	def __init__(self, owner):
 		self._owner = owner
-		self._balance = 0.0
+		self._balance = 0
 		self._transactions = []
 	
 	@abstractmethod
 	def deposit(self, amount):
 		pass
 	
-	# this was overridden
+	# this method was overridden
 	
 	@abstractmethod
 	def withdraw(self, amount):
 		pass
 	
-	# this was overridden
+	# this method was overridden
 	
 	def get_balance(self):
 		return self._balance
@@ -41,7 +41,7 @@ class BankAccount(ABC):
 
 # Savings Account
 class SavingsAccount(BankAccount):
-	def __init__(self, owner, withdrawal_limit=2500000.0):
+	def __init__(self, owner, withdrawal_limit=5000000.0):
 		super().__init__(owner)
 		self._withdrawal_limit = withdrawal_limit
 	
@@ -94,16 +94,16 @@ def main():
 	st.info(f"💵 Current Balance: ${account.get_balance():.2f}")
 	
 	choice = st.radio("Make a choice", ["Deposit", "Withdraw"])
-	amount = st.number_input("Enter amount", min_value=10.0, step=100.0)
+	amount = st.number_input("Enter amount", min_value=5.0, step=100.0)
 	
 	if st.button("Submit Transactions"):
 		if choice == "Deposit":
 			account.deposit(amount)
-			st.success(f"Deposited ${amount:.2f}")
+			st.success(f"Deposited ${amount:.2f} in your account")
 		elif choice == "Withdraw":
 			success = account.withdraw(amount)
 			if success:
-				st.success(f"Withdrew ${amount:.2f}")
+				st.success(f"Withdrew ${amount:.2f} from your account")
 			else:
 				if account_type == "Savings":
 					st.error(f"❌ Withdrawal failed: Max ${account._withdrawal_limit} or insufficient balance.")
