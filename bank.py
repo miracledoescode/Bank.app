@@ -1,8 +1,11 @@
+import sub_classes
 import pandas as pd
 import io
 import streamlit as st
 from abc import ABC, abstractmethod
 from datetime import datetime
+
+from sub_classes import SavingsAccount, CurrentAccount
 
 
 # Abstract base class
@@ -39,46 +42,15 @@ class BankAccount(ABC):
 		})
 
 
-# Savings Account
-class SavingsAccount(BankAccount):
-	def __init__(self, owner, withdrawal_limit=5000000.0):
-		super().__init__(owner)
-		self._withdrawal_limit = withdrawal_limit
-	
-	def deposit(self, amount):
-		if amount > 0:
-			self._balance += amount
-			self._log_transaction("Deposit", amount)
-	
-	def withdraw(self, amount):
-		if 0 < amount <= self._withdrawal_limit and amount <= self._balance:
-			self._balance -= amount
-			self._log_transaction("Withdraw", amount)
-			return True
-		return False
-
-
-# Current Account
-class CurrentAccount(BankAccount):
-	def deposit(self, amount):
-		if amount > 0:
-			self._balance += amount
-			self._log_transaction("Deposit", amount)
-	
-	def withdraw(self, amount):
-		if 0 < amount <= self._balance:
-			self._balance -= amount
-			self._log_transaction("Withdraw", amount)
-			return True
-		return False
-
-
 def main():
 	st.set_page_config(page_icon="💰", page_title="Bank Account App", layout="centered")
 	st.title("🏦 Simple Bank Account App")
 	
 	account_type = st.selectbox("Select Account Type", ["Savings", "Current"])
 	name = st.text_input("Enter Account Holder Name", "")
+	
+	SavingsAccount(BankAccount)
+	CurrentAccount(BankAccount)
 	
 	# Initialize account in session state
 	if "account" not in st.session_state or st.session_state.account_type != account_type:
