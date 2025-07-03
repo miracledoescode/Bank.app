@@ -1,15 +1,33 @@
-this is a bank app 
-like before fork it, clone it and make a pull request on it.
+# Simple Bank Account App
 
-1.savings account 
+This is a simple bank account application built with Streamlit. It allows users to create a savings or current account, deposit and withdraw funds, and view their transaction history.
 
-📌Make the deposit method for the savings account 
-📌 under the savings set a limit for withdrawal at a time (like 25m)
+## How to Run
 
-2.Current account 
+1. **Prerequisites:**
+   - Python 3.x
+   - Pip (Python package installer)
 
-📌Create the withdrawal method 
-📌 create the deposit method 
+2. **Installation:**
+   ```bash
+   pip install streamlit pandas
+   ```
 
-3.interface structure 
-📌Design the UI mustn't be a complex one but just make It usable by the end user using streamlit 
+3. **Run the application:**
+   ```bash
+   streamlit run bank.py
+   ```
+
+## Features
+
+- Create Savings or Current bank accounts.
+- Deposit funds into an account.
+- Withdraw funds from an account (with overdraft protection for Current Accounts and withdrawal limits for Savings Accounts).
+- View transaction history.
+- Download transaction history as a CSV file.
+
+## Technologies Used
+
+- Python
+- Streamlit
+- Pandas
